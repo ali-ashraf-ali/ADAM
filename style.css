@@ -1,0 +1,477 @@
+/* ---- 1. التصميم الأساسي ---- */
+:root {
+    --primary-color: #f7b731; /* أصفر ذهبي */
+    --secondary-color: #ffffff; /* أبيض */
+    --dark-bg: #1a1a1a; /* خلفية داكنة */
+    --text-color: #e0e0e0;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Cairo', sans-serif;
+    color: var(--text-color);
+    text-align: right;
+    direction: rtl;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ---- 2. الخلفية المتحركة ---- */
+.background-slideshow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    animation: zoom-fade 20s infinite;
+}
+
+/* تأخير ظهور الصور لإعطاء تأثير الدوران */
+.slide:nth-child(1) { animation-delay: 0s; }
+.slide:nth-child(2) { animation-delay: 6.6s; }
+.slide:nth-child(3) { animation-delay: 13.2s; }
+
+/* تأثير الزوم والظهور التدريجي */
+@keyframes zoom-fade {
+    0% { transform: scale(1); opacity: 0; }
+    10% { opacity: 1; }
+    30% { transform: scale(1.1); opacity: 1; }
+    40% { opacity: 0; }
+    100% { opacity: 0; }
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: -1;
+}
+
+/* ---- 3. الشريط العلوي (Navbar) ---- */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    z-index: 100;
+    position: relative;
+}
+
+.logo img {
+    height: 50px;
+    border-radius: 5px;
+}
+
+.nav-menu ul {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+.nav-menu a {
+    font-weight: 700;
+    transition: color 0.3s;
+}
+
+.nav-menu a:hover {
+    color: var(--primary-color);
+}
+
+/* ---- 4. المحتوى الرئيسي ---- */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 90px);
+    text-align: center;
+    position: relative;
+    z-index: 10;
+}
+
+.main-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.description {
+    font-size: 1.2rem;
+    max-width: 600px;
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+.main-cta-btn {
+    display: inline-block;
+    padding: 15px 30px;
+    background: var(--primary-color);
+    color: var(--dark-bg);
+    border-radius: 50px;
+    font-weight: 700;
+    transition: transform 0.3s;
+}
+
+.main-cta-btn:hover {
+    transform: scale(1.05);
+}
+
+/* ---- 5. زر الهامبرغر والتصميم المتجاوب للجوال ---- */
+.hamburger-btn {
+    display: none; /* مخفي افتراضياً */
+    width: 30px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 101;
+}
+
+.hamburger-btn span {
+    display: block;
+    height: 3px;
+    background: var(--secondary-color);
+    transition: all 0.3s ease-in-out;
+}
+
+/* تحول الهامبرغر إلى X */
+.hamburger-btn.is-active span:nth-child(1) {
+    transform: translateY(11px) rotate(-45deg);
+}
+
+.hamburger-btn.is-active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-btn.is-active span:nth-child(3) {
+    transform: translateY(-11px) rotate(45deg);
+}
+
+/* تنسيقات الجوال (أقل من 768 بكسل) */
+@media (max-width: 768px) {
+    .header {
+        padding: 20px;
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%; /* مخفي خارج الشاشة */
+        width: 100%;
+        max-width: 300px;
+        height: 100%;
+        background: rgba(26, 26, 26, 0.95);
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        transition: right 0.4s ease-in-out;
+        z-index: 100;
+        padding-top: 100px;
+    }
+
+    .nav-menu.is-active {
+        right: 0;
+    }
+
+    .nav-menu ul {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .nav-menu li {
+        width: 100%;
+        text-align: right;
+        padding: 15px 30px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .nav-menu li:last-child {
+      border-bottom: none;
+    }
+
+    .hamburger-btn {
+        display: flex;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-title {
+        font-size: 2.5rem;
+    }
+    .description {
+        font-size: 1rem;
+    }
+}
+/* ---- 6. قسم الفريق ---- */
+.team-section {
+    padding: 80px 50px;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 50px;
+    color: var(--secondary-color);
+}
+
+.team-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    justify-content: center;
+}
+
+.team-member-card {
+    background-color: rgba(26, 26, 26, 0.7);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    text-align: center;
+}
+
+.team-member-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.team-member-card img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 4px solid var(--primary-color);
+}
+
+.team-member-card h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--secondary-color);
+}
+
+.team-member-card p {
+    font-size: 1rem;
+    color: var(--text-color);
+}
+
+/* تنسيقات الجوال */
+@media (max-width: 768px) {
+    .team-section {
+        padding: 60px 20px;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+}
+/* ---- 7. أيقونات التواصل الاجتماعي ---- */
+.social-icons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    border: 2px solid var(--secondary-color);
+    color: var(--secondary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.social-icon.facebook {
+    border-color: #3b5998;
+    background-color: #3b5998;
+}
+
+.social-icon.instagram {
+    border-color:#d6249f; 
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+}
+
+.social-icon.whatsapp {
+    border-color: #25d366;
+    background-color: #25d366;
+}
+
+.social-icon:hover {
+    transform: scale(1.1);
+}
+
+.social-icon.facebook:hover {    
+    background-color: #3b5998;
+    border-color: #3b5998;
+}
+
+.social-icon.instagram:hover {
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    border-color:#d6249f;
+}
+
+.social-icon.youtube {
+    border-color: rgb(255, 13, 0);
+    background-color: rgb(255, 13, 0);
+}
+
+.social-icon.whatsapp:hover {
+    background-color: #25d366;
+    border-color: #25d366;
+}
+
+/* ---- 8. قسم الفوتر (تصميم بسيط وأنيق) ---- */
+.minimal-footer {
+    background-color: #1a1a1a;
+    color: #f5f5f5;
+    padding: 60px 50px 20px;
+    position: relative;
+    z-index: 10;
+    text-align: right;
+}
+
+.footer-grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    min-width: 200px;
+}
+
+.minimal-footer h4 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #f7d188; /* لون ذهبي فاتح */
+}
+
+.footer-column p, .footer-column li {
+    font-size: 1rem;
+    color: #cccccc;
+    line-height: 1.5;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 10px;
+}
+
+.footer-column ul li i {
+    color: #f7d188; /* لون ذهبي فاتح */
+    margin-left: 10px;
+}
+
+.footer-logo img {
+    max-width: 120px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.designer-info {
+    font-size: 0.9rem;
+    color: #999999;
+}
+
+/* أيقونات السوشيال ميديا */
+.social-icons-footer {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.social-link {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 1px solid #666666;
+    color: #666666;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.social-link:hover {
+    background-color: #f7d188;
+    color: #1a1a1a;
+    border-color: #f7d188;
+}
+
+.copyright {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.8rem;
+    color: #999999;
+}
+
+/* تنسيقات الجوال */
+@media (max-width: 768px) {
+    .minimal-footer {
+        padding: 40px 20px 10px;
+    }
+    .footer-grid {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+    .footer-column {
+        text-align: center;
+        align-items: center;
+    }
+    .social-icons-footer {
+        justify-content: center;
+    }
+}

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8"> 
+    <link rel="icon" type="image/png" href="ph/adam.jpg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بيانات الطالب</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: #f0f2f5;
+            color: #333;
+            text-align: right;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .student-info {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            background-color: #e3f2fd;
+            padding: 20px;
+            border-radius: 8px;
+            border-right: 5px solid #2196f3;
+        }
+
+        .student-info p {
+            margin: 0;
+        }
+
+        .student-info strong {
+            color: #2c3e50;
+        }
+        
+        .level-percentage {
+            font-weight: bold;
+            font-size: 1.3rem;
+            color: #00796b;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            border-right: 4px solid #4dd0e1;
+            padding-right: 10px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .grades-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .grade-card {
+            background-color: #f7f9fb;
+            border: 1px solid #e0e6ed;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .grade-card h3 {
+            margin: 0 0 10px;
+            font-size: 1.2rem;
+            color: #555;
+        }
+
+        .grade-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .grade-card li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #e0e6ed;
+        }
+
+        .grade-card li:last-child {
+            border-bottom: none;
+        }
+
+        .grade-pass {
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        .grade-fail {
+            color: #c0392b;
+            font-weight: bold;
+        }
+
+        .absence {
+            color: #e67e22;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>بيانات الطالب:  بسيوني سليم</h1>
+
+        <div class="student-info">
+            <p><strong>مواعيد المجموعة:</strong> الأحد والأربعاء -  الساعة 12.30   ظهرا </p>
+            <p><strong>عدد مرات الغياب:</strong> <span class="absence">2</span></p>
+            <p><strong>نسبة مستواه العامة:</strong> <span class="level-percentage">85%</span></p>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">شهر سبتمبر</h2>
+            <div class="grades-container">
+                <div class="grade-card">
+                    <h3>درجات التسميع</h3>
+                    <ul>
+                        <li>تسميع 1: <span class="grade-pass">10/10</span></li>
+                        <li>تسميع 2: <span class="grade-pass">9/10</span></li>
+                        <li>تسميع 3: <span class="grade-fail">7/10</span></li>
+                        <li>تسميع 4: <span class="grade-pass">10/10</span></li>
+                        <li>تسميع 5: <span class="grade-pass">9/10</span></li>
+                        <li>تسميع 6: <span class="grade-pass">8/10</span></li>
+                        <li>تسميع 7: <span class="grade-fail">6/10</span></li>
+                        <li>تسميع 8: <span class="grade-pass">10/10</span></li>
+                    </ul>
+                </div>
+                <div class="grade-card">
+                    <h3>درجات الامتحانات</h3>
+                    <ul>
+                        <li>امتحان 1: <span class="grade-pass">45/50</span></li>
+                        <li>امتحان 2: <span class="grade-pass">48/50</span></li>
+                        <li>امتحان 3: <span class="grade-fail">40/50</span></li>
+                        <li>امتحان 4: <span class="grade-pass">49/50</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">شهر أكتوبر</h2>
+            <div class="grades-container">
+                <div class="grade-card">
+                    <h3>درجات التسميع</h3>
+                    <ul>
+                        <li>تسميع 1: <span class="grade-pass">10/10</span></li>
+                        <li>تسميع 2: <span class="grade-pass">9/10</span></li>
+                        <li>تسميع 3: <span class="grade-fail">7/10</span></li>
+                        <li>تسميع 4: <span class="grade-pass">10/10</span></li>
+                        <li>تسميع 5: <span class="grade-pass">9/10</span></li>
+                        <li>تسميع 6: <span class="grade-pass">8/10</span></li>
+                        <li>تسميع 7: <span class="grade-fail">6/10</span></li>
+                        <li>تسميع 8: <span class="grade-pass">10/10</span></li>
+                    </ul>
+                </div>
+                <div class="grade-card">
+                    <h3>درجات الامتحانات</h3>
+                    <ul>
+                        <li>امتحان 1: <span class="grade-pass">45/50</span></li>
+                        <li>امتحان 2: <span class="grade-pass">48/50</span></li>
+                        <li>امتحان 3: <span class="grade-fail">40/50</span></li>
+                        <li>امتحان 4: <span class="grade-pass">49/50</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

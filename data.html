@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="icon" type="image/png" href="ph/adam.jpg">
+    <link rel="stylesheet" href="data.css">
+    <title>موقع المرحلة الإعدادية</title>
+    
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <h1>اعرف مستوى ابنك</h1>
+            <p>جميع درجاته في الامتحانات والتسميع</p>
+        </div>
+        <nav class="navbar">
+            <a href="#" class="nav-link active" onclick="showSection('first')"> اولي اعدادي</a>
+            <a href="#" class="nav-link" onclick="showSection('second')">تانية اعدادي</a>
+            <a href="#" class="nav-link" onclick="showSection('third')"> تالته اعدادي</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="first" class="content-section active">
+            <h2 class="section-title"> اولي اعدادي</h2>
+            <div class="cards-container">
+                
+                <a href="1/بسيوني.html" class="card" style="background-color: #3949ab;">
+                    <h2> بسيوني سليم</h2>
+                    
+                </a>
+                <a href="1/حجازي.html" class="card" style="background-color: #3949ab;">
+                    <h2> حجازي محمد حجازي</h2>
+                    
+                </a>
+                <a href="1/احمد شعبان.html" class="card" style="background-color: #3949ab;">
+                    <h2>أحمد شعبان</h2>
+                   
+                </a>
+            </div>
+        </section>
+
+        <section id="second" class="content-section">
+            <h2 class="section-title"> تانية اعدادي</h2>
+            <div class="cards-container">
+                <a href="2/محمد اسماعيل.html" class="card" style="background-color: #00796b;">
+                    <h2> محمد اسماعيل </h2>
+                    
+                </a>
+                <a href="2/محمد الشعراوي.html" class="card" style="background-color: #00796b;">
+                    <h2> محمد الشعراوي</h2>
+                    
+                </a>
+            </div>
+        </section>
+
+        <section id="third" class="content-section">
+            <h2 class="section-title"> تالته اعدادي</h2>
+            <div class="cards-container">
+                <a href="#" class="card" style="background-color: #f57c00;">
+                    <h2>سيف كمال</h2>
+                    
+                </a>
+                <a href="#" class="card" style="background-color: #f57c00;">
+                    <h2>محمد عمر</h2>
+                    
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        function showSection(sectionId) {
+            // إخفاء كل السكاشن
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // إزالة الكلاس active من كل الروابط
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+
+            // إظهار السكشن المطلوب
+            document.getElementById(sectionId).classList.add('active');
+
+            // إضافة الكلاس active للرابط المضغوط عليه
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
